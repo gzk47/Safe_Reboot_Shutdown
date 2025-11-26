@@ -16,10 +16,10 @@ int main(int argc, char **argv)
     padInitializeAny(&pad);
     
     // Std output
-    printf("\n#### kempa aka dezem - safe reboot / shutdown\n\n");
-    printf("- Press [L] to shutdown\n");
-    printf("- Press [R] to reboot\n\n");
-    printf("- Press [B] to abort\n\n");
+    printf("\n  Safe Reboot / Shutdown                        kempa aka dezem gzk_47\n\n\n\n");
+    printf("- Press [L] to Shutdown\n\n");
+    printf("- Press [R] to Reboot\n\n\n\n");
+    printf("- Press [B] to Exit\n\n");
     consoleUpdate(NULL);
 	
 	// Check shutdown or reboot
