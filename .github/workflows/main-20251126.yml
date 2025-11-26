@@ -1,0 +1,24 @@
+name: Build & Release
+on: workflow_dispatch
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container: devkitpro/devkita64:latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - run: |
+          sed -i 's/"force_debug": true/"force_debug": false/g' Safe_Reboot_Shutdown.json
+          sed -i 's/"allow_debug": false/"allow_debug": true/g' Safe_Reboot_Shutdown.json
+          sed -i 's/"force_debug_prod": true/"force_debug_prod": false/g' Safe_Reboot_Shutdown.json
+          VERSION=$(grep '^APP_VERSION\s*:=' Makefile | sed 's/APP_VERSION\s*:=\s*//;s/\s*$//')
+          make clean && make -j$(nproc)
+          echo "version=$VERSION" >> $GITHUB_ENV
+
+      - uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v${{ env.version }}
+          name: "Safe Reboot v${{ env.version }}"
+          files: "*.nro"
+          body: "Commit: ${{ github.sha }}"
