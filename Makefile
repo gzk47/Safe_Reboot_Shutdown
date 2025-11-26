@@ -37,8 +37,8 @@ DATA		:=	data
 INCLUDES	:=	include
 EXEFS_SRC	:=	exefs_src
 APP_TITLE	:=	Safe Reboot / Shutdown
-APP_AUTHOR	:=	kempa / dezem
-APP_VERSION	:=	1.2
+APP_AUTHOR	:=	kempa / dezem / gzk_47
+APP_VERSION	:=	1.2.1
 #ROMFS	:=	romfs
 
 #---------------------------------------------------------------------------------
